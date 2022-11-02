@@ -54,6 +54,7 @@ export class ShiftCreationUiComponent implements OnInit {
 
   ngOnInit() {
     const shiftBreakForm = this.fb.group({
+      id: [],
       breakStartTime: [null, [Validators.required]],
       breakEndTime: [null, [Validators.required]],
     });
@@ -117,6 +118,42 @@ export class ShiftCreationUiComponent implements OnInit {
 
   trackById(index: number, item: ILocation): any {
     return item.id;
+  }
+
+  addNewFormRow(currentRowNumber: number, form: any): void {
+    console.log(currentRowNumber);
+
+    const shiftBreakForm = this.fb.group({
+      id: [],
+      breakStartTime: [null, [Validators.required]],
+      breakEndTime: [null, [Validators.required]],
+    });
+
+    // let previousFieldEndDate = form.get(['endDate'])!.value;
+    // if(previousFieldEndDate){
+    //   // shiftBreakForm.get(['startDate'])!.setValue(moment(previousFieldEndDate, "DD-MM-YYYY").add('days', 1))
+    //   console.log(previousFieldEndDate);
+    // //const afterAddingOneDay = previousFieldEndDate + 1;
+    // console.log(previousFieldEndDate)
+    // shiftBreakForm.get(['startDate'])!.setValue(previousFieldEndDate.setDate(previousFieldEndDate.getDate() + 1))
+    // }
+
+    console.log(shiftBreakForm)
+    this.shiftBreakFormArray.push(shiftBreakForm);
+
+    console.log(this.shiftBreakFormArray);
+  }
+
+  onChangeShift(formName: any): void {
+    // const shiftId = formName.get(['shiftId'])!.value;
+    // console.log(shiftId);
+    // formName
+    //   .get(['totalWorkingHour'])!
+    //   .setValue(this.getWorkingHourFromShift(shiftId));
+  }
+
+  deleteFormRow(selectedRowNumber: number): void {
+    this.shiftBreakFormArray.removeAt(selectedRowNumber);
   }
 }
 
