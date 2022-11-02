@@ -329,13 +329,12 @@ shift-creation-ui works!
       
         </div>
 
-        <ng-containter formArrayName="shiftBreaksFormArray">
+        <ng-containter formArrayName="shiftBreaks">
         <ng-container
           *ngFor="
-            let shiftBreakForm of listOfRoasterPlan.controls;
-            let i = index
-          "
-        >
+            let shiftBreakForm of shiftBreakFormArray.controls;
+            let i = index">
+            
           <div [formGroupName]="i" class="form-row" [id]="'formRow-' + i">
 
             <div class="col-md-6">
