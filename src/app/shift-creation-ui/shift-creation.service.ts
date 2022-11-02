@@ -6,7 +6,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { IShift } from '../shift-assignment/shift-model';
 import { SERVER_API_URL } from '../app.module';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ShiftCreationService {
   public resourceUrl = SERVER_API_URL + 'api/attendance-mgt/shifts';
 
