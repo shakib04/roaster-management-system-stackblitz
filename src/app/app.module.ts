@@ -20,3 +20,5 @@ import { ShiftCreationUiComponent } from './shift-creation-ui/shift-creation-ui.
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
+
+export const SERVER_API_URL = "http://localhost:8080"
