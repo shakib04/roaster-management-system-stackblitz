@@ -329,6 +329,104 @@ shift-creation-ui works!
       
         </div>
 
+        <ng-containter formArrayName="roasterPlanList">
+        <ng-container
+          *ngFor="
+            let shiftAssignForm of listOfRoasterPlan.controls;
+            let i = index
+          "
+        >
+          <div [formGroupName]="i" class="form-row" [id]="'formRow-' + i">
+            <div class="form-group col-md-6">
+              <label [for]="'shiftId-' + i" class="required"
+                >Select Shift
+              </label>
+              <select
+                [id]="'shiftId-' + i"
+                class="form-control"
+                formControlName="shiftId"
+                (change)="onChangeShift(shiftAssignForm)"
+              >
+                <option [ngValue]="null">
+                  Shift Name (Start Time - End Time) - Days - Location
+                </option>
+                <option [ngValue]="shift.id" *ngFor="let shift of shifts">
+                  {{ shift.shiftName }} ({{ shift.inTime }} -
+                  {{ shift.outTime }}) - {{ shift.weekends }} -
+                  {{ shift.locationName }} - {{ shift.totalWorkingHour }} hours
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label for="start-date" class="required">Start Date</label>
+              <input
+                type="text"
+                class="form-control"
+                id="start-date"
+                formControlName="startDate"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                ngbDatepicker
+                #startDate="ngbDatepicker"
+              />
+              <button
+                class="btn btn-outline-secondary calendar"
+                (click)="startDate.toggle()"
+                type="button"
+              ></button>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label for="end-date" class="required">End Date</label>
+              <input
+                type="text"
+                class="form-control"
+                id="end-date"
+                formControlName="endDate"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                ngbDatepicker
+                #endDate="ngbDatepicker"
+              />
+              <button
+                class="btn btn-outline-secondary calendar"
+                (click)="endDate.toggle()"
+                type="button"
+              ></button>
+            </div>
+
+            <div
+              class="form-group col-md-1"
+              *ngIf="listOfRoasterPlan.controls.length !== 1"
+            >
+              <label for="total-hour" style="visibility:hidden">hidden</label>
+              <button
+                type="submit"
+                class="form-control btn-danger"
+                (click)="deleteFormRow(i)"
+              >
+                Delete
+              </button>
+            </div>
+
+            <div
+              class="form-group col-md-1"
+              *ngIf="listOfRoasterPlan.controls.length - 1 == i"
+            >
+              <label for="total-hour" style="visibility:hidden">hidden</label>
+              <button
+                type="submit"
+                class="form-control btn-secondary"
+                (click)="addNewFormRow(i, shiftAssignForm)"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-containter>
+
         <div>
             <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                 <!-- <fa-icon icon="ban"></fa-icon>&nbsp; -->

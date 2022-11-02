@@ -78,7 +78,8 @@ export class ShiftCreationUiComponent implements OnInit {
 
   save(): void {
     // this.isSaving = true;
-    // const shift = this.createFromForm();
+    const shift = this.createFromForm();
+    console.log(shift)
     // if (shift.id !== undefined) {
     //   this.subscribeToSaveResponse(this.shiftService.update(shift));
     // } else {
