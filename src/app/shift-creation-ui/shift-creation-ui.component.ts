@@ -45,6 +45,12 @@ export class ShiftCreationUiComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit() {
+    const shiftBreakForm = this.fb.group({
+      
+    breakStartTime: [null, [Validators.required]],
+    breakEndTime: [null, [Validators.required]],
+    });
+    this.listOfRoasterPlan.push(shiftAssignForm);
   }
 
   private createFromForm(): IShift {
