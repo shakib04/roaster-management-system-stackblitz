@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Validators, FormBuilder} from '@angular/forms';
+import { Validators, FormBuilder, FormArray } from '@angular/forms';
 //import * as moment from 'moment';
 import moment from 'moment';
 import { ILocation } from '../model/location';
@@ -8,19 +8,28 @@ import { IShift, Shift } from '../shift-assignment/shift-model';
 @Component({
   selector: 'app-shift-creation-ui',
   templateUrl: './shift-creation-ui.component.html',
-  styleUrls: ['./shift-creation-ui.component.css', './bootstrap.min.css', ]
+  styleUrls: ['./shift-creation-ui.component.css', './bootstrap.min.css'],
 })
-
 export class ShiftCreationUiComponent implements OnInit {
-
   isSaving = false;
   locations: ILocation[] = [];
 
-  daysOfWeek = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  daysOfWeek = [
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+  ];
 
   editForm = this.fb.group({
     id: [],
-    shiftName: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
+    shiftName: [
+      null,
+      [Validators.required, Validators.minLength(1), Validators.maxLength(255)],
+    ],
     shiftCode: [null, [Validators.required]],
     inTime: [null, [Validators.required]],
     outTime: [null, [Validators.required]],
@@ -41,16 +50,18 @@ export class ShiftCreationUiComponent implements OnInit {
     shiftBreaksFormArray: this.fb.array([]),
   });
 
-  constructor(
-    private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     const shiftBreakForm = this.fb.group({
-      
-    breakStartTime: [null, [Validators.required]],
-    breakEndTime: [null, [Validators.required]],
+      breakStartTime: [null, [Validators.required]],
+      breakEndTime: [null, [Validators.required]],
     });
-    this.listOfRoasterPlan.push(shiftAssignForm);
+    this.shiftBreakFormArray.push(shiftBreakForm);
+  }
+
+  get shiftBreakFormArray(): FormArray {
+    return this.editForm.controls['roasterPlanList'] as FormArray;
   }
 
   private createFromForm(): IShift {
@@ -59,18 +70,29 @@ export class ShiftCreationUiComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       shiftName: this.editForm.get(['shiftName'])!.value,
       shiftCode: this.editForm.get(['shiftCode'])!.value,
-      inTime: this.editForm.get(['inTime'])!.value ? moment(this.editForm.get(['inTime'])!.value, DATE_TIME_FORMAT) : undefined,
-      outTime: this.editForm.get(['outTime'])!.value ? moment(this.editForm.get(['outTime'])!.value, DATE_TIME_FORMAT) : undefined,
+      inTime: this.editForm.get(['inTime'])!.value
+        ? moment(this.editForm.get(['inTime'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      outTime: this.editForm.get(['outTime'])!.value
+        ? moment(this.editForm.get(['outTime'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       weekends: this.editForm.get(['weekends'])!.value,
       totalBreakMinutes: this.editForm.get(['totalBreakMinutes'])!.value,
       totalWorkingHour: this.editForm.get(['totalWorkingHour'])!.value,
       isGeneralShift: this.editForm.get(['isGeneralShift'])!.value,
-      isFlexScheduleAllowed: this.editForm.get(['isFlexScheduleAllowed'])!.value,
-      isRoasterAssignmentAllowed: this.editForm.get(['isRoasterAssignmentAllowed'])!.value,
+      isFlexScheduleAllowed: this.editForm.get(['isFlexScheduleAllowed'])!
+        .value,
+      isRoasterAssignmentAllowed: this.editForm.get([
+        'isRoasterAssignmentAllowed',
+      ])!.value,
       isPublic: this.editForm.get(['isPublic'])!.value,
       isActive: this.editForm.get(['isActive'])!.value,
-      createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
-      updatedAt: this.editForm.get(['updatedAt'])!.value ? moment(this.editForm.get(['updatedAt'])!.value, DATE_TIME_FORMAT) : undefined,
+      createdAt: this.editForm.get(['createdAt'])!.value
+        ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      updatedAt: this.editForm.get(['updatedAt'])!.value
+        ? moment(this.editForm.get(['updatedAt'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       locationId: this.editForm.get(['locationId'])!.value,
       createdById: this.editForm.get(['createdById'])!.value,
       updatedById: this.editForm.get(['updatedById'])!.value,
@@ -85,7 +107,7 @@ export class ShiftCreationUiComponent implements OnInit {
   save(): void {
     // this.isSaving = true;
     const shift = this.createFromForm();
-    console.log(shift)
+    console.log(shift);
     // if (shift.id !== undefined) {
     //   this.subscribeToSaveResponse(this.shiftService.update(shift));
     // } else {
@@ -96,7 +118,6 @@ export class ShiftCreationUiComponent implements OnInit {
   trackById(index: number, item: ILocation): any {
     return item.id;
   }
-
 }
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
