@@ -37,6 +37,7 @@ export class ShiftCreationUiComponent implements OnInit {
     locationId: [],
     createdById: [null, Validators.required],
     updatedById: [],
+    hasSaturdayMarked: []
   });
 
   constructor(

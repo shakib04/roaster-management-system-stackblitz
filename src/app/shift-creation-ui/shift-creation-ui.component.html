@@ -106,14 +106,14 @@ shift-creation-ui works!
                 <h6 class="col">Select Weekends</h6>
             </div>
 
-            <div class="row my-3">
+            <!-- <div class="row my-3">
             
                 <div class="col">
                     <ng-select [items]="daysOfWeek" [multiple]="true" [closeOnSelect]="false" [searchable]="false" bindLabel="name"
                         placeholder="Select Weekends">
                     </ng-select>
                 </div>
-            </div>
+            </div> -->
 
         
            
@@ -122,7 +122,7 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="field_weekend_saturday">
-                        <label class="custom-control-label" for="field_weekend_saturday">Saturday</label>
+                        <label class="custom-control-label" for="field_weekend_saturday" formControlName="hasSaturdayMarked">Saturday</label>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="field_weekend_sunday">
-                        <label class="custom-control-label" for="field_weekend_sunday">Sunday</label>
+                        <label class="custom-control-label" for="field_weekend_sunday" formControlName="hasSaturdayMarked">Sunday</label>
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="field_weekend_monday">
-                        <label class="custom-control-label" for="field_weekend_monday">Monday</label>
+                        <label class="custom-control-label" for="field_weekend_monday" formControlName="hasSaturdayMarked">Monday</label>
                     </div>
                 </div>
 
@@ -153,7 +153,7 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="field_weekend_tuesday">
-                        <label class="custom-control-label" for="field_weekend_tuesday">Tuesday</label>
+                        <label class="custom-control-label" for="field_weekend_tuesday" formControlName="hasSaturdayMarked">Tuesday</label>
                     </div>
                 </div>
             
@@ -165,7 +165,7 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="field_weekend_wednesday">
-                        <label class="custom-control-label" for="field_weekend_wednesday">Wednesday</label>
+                        <label class="custom-control-label" for="field_weekend_wednesday" formControlName="hasSaturdayMarked">Wednesday</label>
                     </div>
                 </div>
             
@@ -176,7 +176,7 @@ shift-creation-ui works!
             
                 <div class="col">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="field_weekend_thursday">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_thursday" formControlName="hasSaturdayMarked">
                         <label class="custom-control-label" for="field_weekend_thursday">Thursday</label>
                     </div>
                 </div>
@@ -241,7 +241,7 @@ shift-creation-ui works!
 
             
 
-            <div class="row">
+            <div class="row my-3">
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="isGeneralShift" id="field_isGeneralShift"
@@ -259,11 +259,15 @@ shift-creation-ui works!
             
                     </div>
                 </div>
+
+            </div>
+            
+            <div class="row my-3">
             
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="isRoasterAssignmentAllowed" id="field_isRoasterAssignmentAllowed"
-                                            formControlName="isRoasterAssignmentAllowed"/>
+                                                formControlName="isRoasterAssignmentAllowed"/>
                         <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isRoasterAssignmentAllowed" for="field_isRoasterAssignmentAllowed">Is Roaster Assignment Allowed</label>
             
                     </div>
@@ -272,12 +276,13 @@ shift-creation-ui works!
                 <div class="col">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="isPublic" id="field_isPublic"
-                                            formControlName="isPublic"/>
+                                                formControlName="isPublic"/>
                         <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isPublic" for="field_isPublic">Is Public</label>
             
                     </div>
                 </div>
             </div>
+        
 
            
 
