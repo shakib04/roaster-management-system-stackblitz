@@ -41,7 +41,7 @@ export class ShiftCreationUiComponent implements OnInit {
     isRoasterAssignmentAllowed: [],
     isPublic: [],
     isActive: [],
-    createdAt: [null, [Validators.required]],
+    createdAt: [null],
     updatedAt: [],
     locationId: [],
     createdById: [null],
