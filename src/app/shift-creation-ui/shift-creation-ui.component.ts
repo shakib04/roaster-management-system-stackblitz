@@ -47,7 +47,7 @@ export class ShiftCreationUiComponent implements OnInit {
     createdById: [null, Validators.required],
     updatedById: [],
     hasSaturdayMarked: [],
-    shiftBreaksFormArray: this.fb.array([]),
+    shiftBreaks: this.fb.array([]),
   });
 
   constructor(private fb: FormBuilder) {}
@@ -61,7 +61,7 @@ export class ShiftCreationUiComponent implements OnInit {
   }
 
   get shiftBreakFormArray(): FormArray {
-    return this.editForm.controls['roasterPlanList'] as FormArray;
+    return this.editForm.controls['shiftBreaks'] as FormArray;
   }
 
   private createFromForm(): IShift {
