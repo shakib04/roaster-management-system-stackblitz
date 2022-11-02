@@ -37,7 +37,8 @@ export class ShiftCreationUiComponent implements OnInit {
     locationId: [],
     createdById: [null, Validators.required],
     updatedById: [],
-    hasSaturdayMarked: []
+    hasSaturdayMarked: [],
+    shiftBreaks: []
   });
 
   constructor(
@@ -67,6 +68,7 @@ export class ShiftCreationUiComponent implements OnInit {
       locationId: this.editForm.get(['locationId'])!.value,
       createdById: this.editForm.get(['createdById'])!.value,
       updatedById: this.editForm.get(['updatedById'])!.value,
+      shiftBreaks: this.editForm.get(['shiftBreaks'])!.value,
     };
   }
 
