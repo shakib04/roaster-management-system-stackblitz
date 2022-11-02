@@ -1,0 +1,17 @@
+.required::after{
+  content: '*' !important;
+  margin-left: 4px;
+  color: red;
+}
+
+.border-bottom-none{
+  border-bottom: none !important;
+}
+
+.border-top-none{
+  border-top: none !important;
+}
+
+.font-sm{
+  font-size: 0.75rem !important;
+}

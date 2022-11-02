@@ -1,0 +1,340 @@
+<p>
+shift-creation-ui works!
+</p>
+
+<div class="card">
+<div class="card-body">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <h2 id="jhi-shift-heading" jhiTranslate="bitsHrPayrollApp.shift.home.createOrEditLabel">Create or edit a Shift</h2>
+
+        <div>
+
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.shiftName" for="field_shiftName">Shift Name</label>
+                        <input type="text" class="form-control" name="shiftName" id="field_shiftName"
+                                   formControlName="shiftName"/>
+                        <div
+                            *ngIf="editForm.get('shiftName')!.invalid && (editForm.get('shiftName')!.dirty || editForm.get('shiftName')!.touched)">
+                            <small class="form-text text-danger"
+                                       *ngIf="editForm.get('shiftName')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            <!-- <small class="form-text text-danger"
+                                       *ngIf="editForm.get('shiftName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 1 }">
+                                This field is required to be at least 1 characters.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('shiftName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                                This field cannot be longer than 255 characters.
+                                </small> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.shiftCode" for="field_shiftCode">Shift Code</label>
+                        <input type="text" class="form-control" name="shiftCode" id="field_shiftCode"
+                                       formControlName="shiftCode"/>
+                        <div
+                            *ngIf="editForm.get('shiftCode')!.invalid && (editForm.get('shiftCode')!.dirty || editForm.get('shiftCode')!.touched)">
+                            <small class="form-text text-danger"
+                                           *ngIf="editForm.get('shiftCode')?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                    </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        
+           
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.inTime" for="field_inTime">In Time</label>
+                        <div class="d-flex">
+                            <input id="field_inTime" type="time" class="form-control" name="inTime" formControlName="inTime" placeholder="YYYY-MM-DD HH:mm"/>
+                        </div>
+                        <div
+                            *ngIf="editForm.get('inTime')!.invalid && (editForm.get('inTime')!.dirty || editForm.get('inTime')!.touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('inTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                [hidden]="!editForm.get('inTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                                This field should be a date and time.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.outTime" for="field_outTime">Out Time</label>
+                        <div class="d-flex">
+                            <input id="field_outTime" type="time" class="form-control" name="outTime" formControlName="outTime" placeholder="YYYY-MM-DD HH:mm"/>
+                        </div>
+                        <div
+                            *ngIf="editForm.get('outTime')!.invalid && (editForm.get('outTime')!.dirty || editForm.get('outTime')!.touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('outTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                [hidden]="!editForm.get('outTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                                This field should be a date and time.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+
+            
+
+
+            <div class="row">
+                <h6 class="col">Select Weekends</h6>
+            </div>
+
+            <div class="row my-3">
+            
+                <div class="col">
+                    <ng-select [items]="daysOfWeek" [multiple]="true" [closeOnSelect]="false" [searchable]="false" bindLabel="name"
+                        placeholder="Select Weekends">
+                    </ng-select>
+                </div>
+            </div>
+
+        
+           
+
+            <div class="row my-3">
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_saturday">
+                        <label class="custom-control-label" for="field_weekend_saturday">Saturday</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_sunday">
+                        <label class="custom-control-label" for="field_weekend_sunday">Sunday</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row my-3">
+        
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_monday">
+                        <label class="custom-control-label" for="field_weekend_monday">Monday</label>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row my-3">
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_tuesday">
+                        <label class="custom-control-label" for="field_weekend_tuesday">Tuesday</label>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <div class="row my-3">
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_wednesday">
+                        <label class="custom-control-label" for="field_weekend_wednesday">Wednesday</label>
+                    </div>
+                </div>
+            
+            </div>
+            
+            
+            <div class="row my-3">
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_thursday">
+                        <label class="custom-control-label" for="field_weekend_thursday">Thursday</label>
+                    </div>
+                </div>
+            
+            </div>
+            
+            
+            <div class="row my-3">
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_weekend_friday">
+                        <label class="custom-control-label" for="field_weekend_friday">Friday</label>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <!-- <div class="form-group">
+
+                <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.weekends" for="field_weekends">Weekends</label>
+                <input type="text" class="form-control" name="weekends" id="field_weekends"
+                       formControlName="weekends"/>
+            </div> -->
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.totalBreakMinutes" for="field_totalBreakMinutes">Total Break Minutes</label>
+                        <input type="number" class="form-control" name="totalBreakMinutes" id="field_totalBreakMinutes"
+                               formControlName="totalBreakMinutes"/>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.totalWorkingHour" for="field_totalWorkingHour">Total Working Hour</label>
+                        <input type="number" class="form-control" name="totalWorkingHour" id="field_totalWorkingHour"
+                               formControlName="totalWorkingHour"/>
+                        <div
+                            *ngIf="editForm.get('totalWorkingHour')!.invalid && (editForm.get('totalWorkingHour')!.dirty || editForm.get('totalWorkingHour')!.touched)">
+                            <!-- <small class="form-text text-danger"
+                                   *ngIf="editForm.get('totalWorkingHour')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                                This field should be at least 0.
+                            </small>
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('totalWorkingHour')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 24 }">
+                                This field cannot be more than 24.
+                            </small> -->
+                            <small class="form-text text-danger"
+                                [hidden]="!editForm.get('totalWorkingHour')?.errors?.number" jhiTranslate="entity.validation.number">
+                                This field should be a number.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            
+
+            <div class="row">
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="isGeneralShift" id="field_isGeneralShift"
+                                                           formControlName="isGeneralShift"/>
+                        <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isGeneralShift" for="field_isGeneralShift">Is General Shift</label>
+            
+                    </div>
+                </div>
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="isFlexScheduleAllowed" id="field_isFlexScheduleAllowed"
+                                            formControlName="isFlexScheduleAllowed"/>
+                        <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isFlexScheduleAllowed" for="field_isFlexScheduleAllowed">Is Flex Schedule Allowed</label>
+            
+                    </div>
+                </div>
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="isRoasterAssignmentAllowed" id="field_isRoasterAssignmentAllowed"
+                                            formControlName="isRoasterAssignmentAllowed"/>
+                        <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isRoasterAssignmentAllowed" for="field_isRoasterAssignmentAllowed">Is Roaster Assignment Allowed</label>
+            
+                    </div>
+                </div>
+            
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="isPublic" id="field_isPublic"
+                                            formControlName="isPublic"/>
+                        <label class="custom-control-label" jhiTranslate="bitsHrPayrollApp.shift.isPublic" for="field_isPublic">Is Public</label>
+            
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <!-- <div class="form-group">
+                <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.isActive" for="field_isActive">Is Active</label>
+                <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                       formControlName="isActive"/>
+            </div> -->
+
+            <!-- <div class="form-group">
+                <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.createdAt" for="field_createdAt">Created At</label>
+                <div class="d-flex">
+                    <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
+                </div>
+                <div *ngIf="editForm.get('createdAt')!.invalid && (editForm.get('createdAt')!.dirty || editForm.get('createdAt')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('createdAt')?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                    </small>
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.get('createdAt')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                        This field should be a date and time.
+                    </small>
+                </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+                <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.updatedAt" for="field_updatedAt">Updated At</label>
+                <div class="d-flex">
+                    <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" formControlName="updatedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                </div>
+            </div> -->
+
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="bitsHrPayrollApp.shift.location" for="field_location">Location</label>
+                <select class="form-control" id="field_location" name="location" formControlName="locationId">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="locationOption.id" *ngFor="let locationOption of locations; trackBy: trackById">{{ locationOption.id }}</option>
+                </select>
+            </div>
+
+
+
+      
+        </div>
+
+        <div>
+            <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                <!-- <fa-icon icon="ban"></fa-icon>&nbsp; -->
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+
+            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <!-- <fa-icon icon="save"></fa-icon>&nbsp; -->
+                <span jhiTranslate="entity.action.save">Save</span>
+            </button>
+        </div>
+    </form>
+</div>
+</div>
