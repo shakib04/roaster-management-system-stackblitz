@@ -38,7 +38,7 @@ export class ShiftCreationUiComponent implements OnInit {
     createdById: [null, Validators.required],
     updatedById: [],
     hasSaturdayMarked: [],
-    shiftBreaks: []
+    shiftBreaksFormArray: this.fb.array([]),
   });
 
   constructor(
