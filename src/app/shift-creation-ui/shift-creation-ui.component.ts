@@ -162,9 +162,20 @@ export class ShiftCreationUiComponent implements OnInit {
     const inTime = this.editForm.get(['inTime'])!.value;
     const outTime = this.editForm.get(['outTime'])!.value;
     if(inTime && outTime && breakStartTime && breakEndTime){
-      
+       
     }
   }
+
+  calculateWorkHoursAndBreakMinutesV2(shiftBreakForm: any):void{
+    const breakStartTime = shiftBreakForm.get(['breakStartTime'])!.value;
+    const breakEndTime = shiftBreakForm.get(['breakEndTime'])!.value;
+    const inTime = this.editForm.get(['inTime'])!.value;
+    const outTime = this.editForm.get(['outTime'])!.value;
+    if(inTime && outTime && breakStartTime && breakEndTime){
+       
+    }
+  }
+
 }
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
