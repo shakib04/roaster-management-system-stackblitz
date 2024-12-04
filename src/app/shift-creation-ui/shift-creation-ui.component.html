@@ -1,8 +1,5 @@
-<p>
-shift-creation-ui works!
-</p>
 
-<div class="card">
+<div class="container card">
 <div class="card-body">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
         <h2 id="jhi-shift-heading" jhiTranslate="bitsHrPayrollApp.shift.home.createOrEditLabel">Create or edit a Shift</h2>
@@ -399,7 +396,7 @@ shift-creation-ui works!
               <button
               [disabled]="shiftBreakForm.invalid"
                 type="submit"
-                class="form-control btn-secondary"
+                class="form-control btn-success"
                 (click)="addNewFormRow(i, shiftBreakForm)"
               >
                 Add
@@ -410,12 +407,12 @@ shift-creation-ui works!
       </ng-containter>
 
         <div>
-            <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+            <button type="button" id="cancel-save" class="btn btn-danger mr-2" (click)="previousState()">
                 <!-- <fa-icon icon="ban"></fa-icon>&nbsp; -->
                 <span jhiTranslate="entity.action.cancel">Cancel</span>
             </button>
 
-            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-success">
                 <!-- <fa-icon icon="save"></fa-icon>&nbsp; -->
                 <span jhiTranslate="entity.action.save">Save</span>
             </button>
