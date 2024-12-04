@@ -15,7 +15,7 @@
 
 <!-- jhi-header -->
 
-<div class="card m-2 font-sm">
+<div class="container card m-2 font-sm">
   <div class="card-body">
     <form class="" [formGroup]="editForm" (ngSubmit)="onSubmit()">
       <div class="form-row">
@@ -151,7 +151,7 @@
               <label for="total-hour" style="visibility:hidden">hidden</label>
               <button
                 type="submit"
-                class="form-control btn-secondary"
+                class="form-control btn-success"
                 (click)="addNewFormRow(i, shiftAssignForm)"
               >
                 Add
