@@ -1,3 +1,3 @@
 # roaster-management-system-stackblitz
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-bmcrbd)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/~/github.com/shakib04/roaster-management-system-stackblitz)
